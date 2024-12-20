@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d1f2e5; /* Light green background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #374151;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    text-align: center;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    box-sizing: border-box;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #10b981; /* Light green border on focus */
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3); /* Green focus shadow */
+  }
+  
+  button {
+    width: 100%;
+    background-color: #10b981; /* Green button */
+    color: #ffffff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #059669; /* Darker green on hover */
+  }
+  
+  label {
+    color: #4b5563;
+    font-size: 0.875rem;
+  }
+  
+  .error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .link {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: #10b981;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .link:hover {
+    color: #059669; /* Darker green on hover */
+  }
+  button:disabled {
+    background-color: #d3d3d3; /* Light grey background */
+    color: #a9a9a9; /* Greyed out text */
+    cursor: not-allowed; /* Blocked cursor */
+    border: 1px solid #ccc; /* Light border for disabled button */
+    pointer-events: none; /* Prevent any click events */
+  }
+  
+  button:not(:disabled) {
+    pointer-events: auto; /* Re-enable pointer events for enabled buttons */
+  }

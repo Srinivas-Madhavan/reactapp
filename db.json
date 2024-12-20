@@ -1,0 +1,197 @@
+{
+  "users": [
+    {
+      "firstName": "sa",
+      "lastName": "sa",
+      "email": "sa@sa.com",
+      "password": "12345678",
+      "id": "515f"
+    },
+    {
+      "id": "4ab4",
+      "firstName": "bb",
+      "lastName": "bb",
+      "email": "bb@b.com",
+      "password": "00000000"
+    },
+    {
+      "id": "e799",
+      "firstName": "asd",
+      "lastName": "asd",
+      "email": "asd@a.com",
+      "password": "aaaaaa"
+    }
+  ],
+  "address": [
+    {
+      "id": "6635",
+      "userId": "515f",
+      "street": "#9A, Thillai Ganga Nagar 21st Street",
+      "city": "CHENNAI",
+      "state": "Tamil Nadu",
+      "zipCode": "600061",
+      "country": "India"
+    },
+    {
+      "id": "ea75",
+      "userId": "515f",
+      "street": "#9A, Thillai Ganga Nagar 21st Street",
+      "city": "CHENNAI",
+      "state": "Tamil Nadu",
+      "zipCode": "600061",
+      "country": "India"
+    }
+  ],
+  "paymentDetails": [
+    {
+      "id": "c4a1",
+      "userId": "515f",
+      "cardNumber": "1234567890123456",
+      "cardHolder": "1234567890123456",
+      "expiryDate": "04/25",
+      "cvv": "007"
+    },
+    {
+      "id": "3c15",
+      "userId": "515f",
+      "cardNumber": "12345",
+      "cardHolder": "Steve",
+      "expiryDate": "02/25",
+      "cvv": "404"
+    }
+  ],
+  "orders": [
+    {
+      "id": "string",
+      "userId": "string",
+      "items": [
+        {
+          "name": "string",
+          "quantity": "number",
+          "price": "number"
+        }
+      ],
+      "totalAmount": "number",
+      "paymentId": "string",
+      "orderDate": "string",
+      "status": "string",
+      "deliveryAddress": "object"
+    },
+    {
+      "id": "lmd2",
+      "userId": "515f",
+      "items": [
+        {
+          "name": "Pasta",
+          "description": "Delicious Italian pasta",
+          "price": 12.99,
+          "image": "/pasta.jpg",
+          "quantity": 1
+        },
+        {
+          "name": "Burger",
+          "description": "Juicy beef burger",
+          "price": 8.99,
+          "image": "/burger.jpg",
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 24.178,
+      "paymentId": "3c15",
+      "orderDate": "2024-12-20T05:44:56.472Z",
+      "status": "Confirmed",
+      "deliveryAddress": {
+        "id": "6635",
+        "userId": "515f",
+        "street": "#9A, Thillai Ganga Nagar 21st Street",
+        "city": "CHENNAI",
+        "state": "Tamil Nadu",
+        "zipCode": "600061",
+        "country": "India"
+      }
+    },
+    {
+      "id": "n4qp",
+      "userId": "515f",
+      "items": [
+        {
+          "name": "Pasta",
+          "description": "Delicious Italian pasta",
+          "price": 12.99,
+          "image": "/pasta.jpg",
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 14.289,
+      "paymentMethod": "upi",
+      "paymentId": "upi_1734673747595",
+      "orderDate": "2024-12-20T05:49:07.595Z",
+      "status": "Confirmed",
+      "deliveryAddress": {
+        "id": "6635",
+        "userId": "515f",
+        "street": "#9A, Thillai Ganga Nagar 21st Street",
+        "city": "CHENNAI",
+        "state": "Tamil Nadu",
+        "zipCode": "600061",
+        "country": "India"
+      }
+    }
+  ],
+  "foods": [
+    {
+      "id": "1",
+      "restaurant": "Tasty Bites",
+      "dishName": "Classic Burger",
+      "description": "Juicy Cheesy Burger",
+      "imageUrl": "https://www.unileverfoodsolutions.com.sg/dam/global-ufs/mcos/SEA/calcmenu/recipes/SG-recipes/vegetables-&-vegetable-dishes/%E7%BB%8F%E5%85%B8%E8%8A%9D%E5%A3%AB%E6%B1%89%E5%A0%A1/main-header.jpg",
+      "rating": 4.5,
+      "cost": 129.9
+    },
+    {
+      "id": "2",
+      "restaurant": "Pizza Hub",
+      "dishName": "Margherita Pizza",
+      "description": "Classic Italian Pizza with fresh ingredients",
+      "imageUrl": "https://example.com/margherita-pizza.jpg",
+      "rating": 4.7,
+      "cost": 149.9
+    },
+    {
+      "id": "3",
+      "restaurant": "Sushi World",
+      "dishName": "California Rolls",
+      "description": "Fresh and delicious California rolls",
+      "imageUrl": "https://example.com/california-rolls.jpg",
+      "rating": 4.8,
+      "cost": 99.9
+    },
+    {
+      "id": "4",
+      "restaurant": "Burger King",
+      "dishName": "Whopper",
+      "description": "Flame-grilled beef patty with fresh toppings",
+      "imageUrl": "https://example.com/whopper.jpg",
+      "rating": 4.6,
+      "cost": 109.9
+    },
+    {
+      "id": "5",
+      "restaurant": "Pasta House",
+      "dishName": "Spaghetti Bolognese",
+      "description": "Classic Italian pasta with a savory meat sauce",
+      "imageUrl": "https://example.com/spaghetti-bolognese.jpg",
+      "rating": 4.5,
+      "cost": 129.9
+    },
+    {
+      "id": "6",
+      "restaurant": "Tasty Bites",
+      "dishName": "Chicken Sandwich",
+      "description": "Crispy chicken with a tasty sauce",
+      "imageUrl": "https://example.com/chicken-sandwich.jpg",
+      "rating": 4.3,
+      "cost": 119.9
+    }
+  ]
+}
