@@ -1,40 +1,82 @@
 // src/components/Order/OrderTracking.js
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { PageLayout, Card, Input } from './Layout/PageLayout';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import classes from "./../styles/ordertracking.module.css";
 
 const OrderTracking = () => {
   const [orders, setOrders] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [error, setError] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
         if (!currentUser) {
-          navigate('/login');
+          navigate("/login");
           return;
         }
 
-        const response = await axios.get(`http://localhost:5000/orders?userId=${currentUser.id}`);
-        const sortedOrders = response.data.sort((a, b) => 
-          new Date(b.orderDate) - new Date(a.orderDate)
+        const response = await axios.get(
+          `http://localhost:5000/orders?userId=${currentUser.id}`
+        );
+        const sortedOrders = response.data.sort(
+          (a, b) => new Date(b.orderDate) - new Date(a.orderDate)
         );
         setOrders(sortedOrders);
         setFilteredOrders(sortedOrders);
       } catch (err) {
-        setError('Failed to fetch orders');
+        setError("Failed to fetch orders");
       } finally {
         setLoading(false);
       }
     };
 
     fetchOrders();
+
+    const interval = setInterval(() => {
+      setOrders((prevOrders) => {
+        return prevOrders.map((order) => {
+          const createdDate = new Date(order.orderDate).valueOf();
+          const currentDate = Date.now();
+          const timeDiffInSeconds = (currentDate - createdDate) / 1000;
+
+          let updatedStatus = order.status;
+
+          if (timeDiffInSeconds > 8) {
+            updatedStatus = "Delivered";
+          } else if (timeDiffInSeconds > 4) {
+            updatedStatus = "Confirmed";
+          }
+
+          order.status = updatedStatus;
+          updateOrderStatus(order);
+
+          return order;
+        });
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
   }, []);
+
+  const updateOrderStatus = async (order) => {
+    try {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!currentUser) {
+        navigate("/login");
+        return;
+      }
+
+      await axios.put(`http://localhost:5000/orders/${order.id}`, order);
+    } catch (err) {
+      console.error("Error updating order status:", err);
+    }
+  };
 
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
@@ -43,100 +85,108 @@ const OrderTracking = () => {
     const filtered = orders.filter((order) =>
       order.id.toLowerCase().includes(term)
     );
+
     setFilteredOrders(filtered);
   };
 
   const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
-      case 'confirmed':
-        return 'bg-green-100 text-green-800 border border-green-200';
-      case 'pending':
-        return 'bg-yellow-100 text-yellow-800 border border-yellow-200';
-      case 'delivered':
-        return 'bg-blue-100 text-blue-800 border border-blue-200';
+      case "confirmed":
+        return classes.confirmed;
+      case "pending":
+        return classes.pending;
+      case "delivered":
+        return classes.delivered;
       default:
-        return 'bg-gray-100 text-gray-800 border border-gray-200';
+        return classes.default;
     }
   };
 
   if (loading) {
     return (
-      <PageLayout title="Order Tracking">
-        <div className="flex items-center justify-center h-64">
-          <div className="text-xl text-gray-600 font-medium">Loading orders...</div>
+      <div title="Order Tracking">
+        <div>
+          <div>Loading orders...</div>
         </div>
-      </PageLayout>
+      </div>
     );
   }
 
   const content = (
-    <>
-      {error && (
-        <div className="mb-6 bg-red-100 text-red-700 p-4 rounded-lg border border-red-200">
-          {error}
-        </div>
-      )}
+    <div>
+      {error && <div>{error}</div>}
 
-      <Card className="mb-6">
-        <Input
-          placeholder="Search by Order ID"
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-      </Card>
+      <header>
+        <p className={classes.header}>Food ordering app</p>
+        <div className={classes.headerComponent}>
+          <button onClick={() => navigate("/home")} variant="outlined">
+            HOME
+          </button>
+          <button onClick={() => navigate("/order-confirm")} variant="outlined">
+            ORDER-CONFIRM
+          </button>
+          <button onClick={() => navigate("/settings")} variant="outlined">
+            SETTINGS
+          </button>
+          <button onClick={() => navigate("/")} variant="outlined">
+            LOGOUT
+          </button>
+        </div>
+      </header>
+
+      <input
+        placeholder="Search by Order ID"
+        value={searchTerm}
+        onChange={handleSearch}
+        className={classes.searchInput}
+      />
 
       {filteredOrders.length === 0 ? (
-        <Card>
-          <p className="text-gray-500 text-lg text-center">No orders found</p>
-        </Card>
+        <div className={classes.noItems}>
+          <p>No orders found</p>
+        </div>
       ) : (
-        <Card>
-          <div className="overflow-x-auto">
-            <table className="w-full table-auto border-collapse">
+        <div className={classes.container}>
+          <div className={classes.tableContainer}>
+            <table className={classes.table}>
               <thead>
-                <tr className="text-left border-b">
-                  <th className="p-4 text-gray-800">Order ID</th>
-                  <th className="p-4 text-gray-800">Order Date</th>
-                  <th className="p-4 text-gray-800">Status</th>
-                  <th className="p-4 text-gray-800">Total Amount</th>
-                  <th className="p-4 text-gray-800">Delivery Address</th>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Order Date</th>
+                  <th>Total Amount</th>
+                  <th>Delivery Address</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredOrders.map((order) => (
-                  <tr key={order.id} className="border-b hover:bg-gray-50">
-                    <td className="p-4 text-gray-600">{order.id}</td>
-                    <td className="p-4 text-gray-600">
-                      {new Date(order.orderDate).toLocaleString()}
+                  <tr key={order.id}>
+                    <td>{order.id}</td>
+                    <td>{new Date(order.orderDate).toLocaleString()}</td>
+                    <td>${order.totalAmount.toFixed(2)}</td>
+                    <td>
+                      {order.deliveryAddress.street},{" "}
+                      {order.deliveryAddress.city},{" "}
+                      {order.deliveryAddress.state}{" "}
+                      {order.deliveryAddress.zipCode},{" "}
+                      {order.deliveryAddress.country}
                     </td>
-                    <td className="p-4">
-                      <span className={`px-4 py-1.5 rounded-full text-sm font-medium ${getStatusColor(order.status)}`}>
+                    <td>
+                      <span className={`${getStatusColor(order.status)}`}>
                         {order.status}
                       </span>
-                    </td>
-                    <td className="p-4 text-gray-600">
-                      ${order.totalAmount.toFixed(2)}
-                    </td>
-                    <td className="p-4 text-gray-600">
-                      {order.deliveryAddress.street}, {order.deliveryAddress.city},{' '}
-                      {order.deliveryAddress.state} {order.deliveryAddress.zipCode},{' '}
-                      {order.deliveryAddress.country}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-        </Card>
+        </div>
       )}
-    </>
+    </div>
   );
 
-  return (
-    <PageLayout title="Order Tracking">
-      {content}
-    </PageLayout>
-  );
+  return <div className={classes.main}>{content}</div>;
 };
 
 export default OrderTracking;

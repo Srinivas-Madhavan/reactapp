@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/register.css';
+import classes from '../styles/register.module.css';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -105,36 +105,34 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <div>
-        <h2>Register</h2>
-        <p>
+    <div className={classes.main}>
+      <div className={classes.container}>
+        <h2 className={classes.header}>Register</h2>
+        <p className={classes.description}>
           Create your account. It's free and only takes a minute.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <div className="flex-1">
+        <form onSubmit={handleSubmit}>
+          <div className={classes.firstnameLastname}>
+            <div>
               <input
                 type="text"
                 name="firstName"
                 placeholder="First Name"
                 value={formData.firstName}
                 onChange={handleChange}
-                className="w-full p-2 border rounded border-gray-300"
               />
-              {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
+              {errors.firstName && <p>{errors.firstName}</p>}
             </div>
-            <div className="flex-1">
+            <div>
               <input
                 type="text"
                 name="lastName"
                 placeholder="Last Name"
                 value={formData.lastName}
                 onChange={handleChange}
-                className="w-full p-2 border rounded border-gray-300"
               />
-              {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
+              {errors.lastName && <p>{errors.lastName}</p>}
             </div>
           </div>
 
@@ -145,9 +143,8 @@ const Register = () => {
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-2 border rounded border-gray-300"
             />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            {errors.email && <p>{errors.email}</p>}
           </div>
 
           <div>
@@ -157,9 +154,8 @@ const Register = () => {
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full p-2 border rounded border-gray-300"
             />
-            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
+            {errors.password && <p>{errors.password}</p>}
           </div>
 
           <div>
@@ -169,44 +165,41 @@ const Register = () => {
               placeholder="Confirm Password"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full p-2 border rounded border-gray-300"
             />
             {errors.confirmPassword && (
-              <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>
+              <p>{errors.confirmPassword}</p>
             )}
           </div>
 
-          <div className="flex items-center">
+          <div className={classes.checkboxInput}>
             <input
               type="checkbox"
               name="acceptTerms"
               checked={formData.acceptTerms}
               onChange={handleChange}
-              className="mr-2"
             />
-            <label className="text-sm text-gray-600">
-              I accept the <a href="#" className="text-green-500">Terms of Use</a> &{' '}
-              <a href="#" className="text-green-500">Privacy Policy</a>
+            <label>
+              I accept the <a href="#">Terms of Use</a> &{' '}
+              <a href="#">Privacy Policy</a>
             </label>
           </div>
-          {errors.acceptTerms && <p className="text-red-500 text-sm">{errors.acceptTerms}</p>}
+          {errors.acceptTerms && <p>{errors.acceptTerms}</p>}
 
           <button
             type="submit"
-            className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition-colors"
             disabled={!isFormValid()} // Disable button if form is not valid
+            className={classes.button}
           >
             Register Now
           </button>
         </form>
-
-        <p className="text-center mt-6 text-gray-600">
+      </div>
+      <p className={classes.login}>
           Already have an account?{' '}
-          <Link to="/login" className="text-green-500 hover:text-green-600">
+          <Link to="/login">
             Login
           </Link>
         </p>
-      </div>
     </div>
   );
 };

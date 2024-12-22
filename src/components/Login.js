@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/login.css';
+import classes from '../styles/login.module.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,7 +31,6 @@ const Login = () => {
 
       if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
-        alert('Login successful!');
         navigate('/home'); // Redirect to the desired page
       } else {
         setErrors('Invalid email or password.');
@@ -42,19 +41,18 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-600 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
-        <h2 className="text-2xl text-center text-gray-700 mb-4">Login</h2>
+    <div className={classes.main}>
+      <div className={classes.container}>
+        <h2 className={classes.header}>Login</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit}>
           <div>
             <input
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="Username"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-2 border rounded border-gray-300"
             />
           </div>
 
@@ -65,33 +63,32 @@ const Login = () => {
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full p-2 border rounded border-gray-300"
             />
           </div>
 
-          {errors && <p className="text-red-500 text-sm">{errors}</p>}
+          {errors && <p>{errors}</p>}
 
           <button
             type="submit"
-            className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition-colors"
+            className={classes.button}
           >
             Login
           </button>
         </form>
 
-        <p className="text-center mt-6 text-gray-600">
-          Don't have an account?{' '}
-          <Link to="/" className="text-green-500 hover:text-green-600">
-            Register
+        <p>
+          Forgot your password?{' '}
+          <Link to="/forgot-password">
+            Reset it here
           </Link>
         </p>
       </div>
-      <p className="text-center mt-2 text-gray-600">
-          Forgot your password?{' '}
-          <Link to="/forgot-password" className="text-green-500 hover:text-green-600">
-            Reset it here
+      <p>
+          Don't have an account?{' '}
+          <Link to="/">
+            Register
           </Link>
-      </p>
+        </p>
     </div>
   );
 };

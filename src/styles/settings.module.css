@@ -1,0 +1,180 @@
+.main{
+    height: 100%;
+    background-color: #d2dceb;
+}
+
+.header{
+    text-align: center;
+    padding: 20px 0px 10px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.headerComponent{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerComponent button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid rgb(83, 170, 83);
+    background-color: rgb(83, 170, 83);
+    color : white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.headerComponent button:hover{
+    background-color: white;
+    color:rgb(83, 170, 83);
+}
+
+.head{
+    background-color: lightgray;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    margin: 0 35%;
+}
+
+.body{
+    position: relative;
+    width: 75px;
+    height: 75px;
+    margin: 0 auto;
+    background-color: lightgray;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.information {
+    margin: 20px;
+    background-color: white;
+    width: 15%;
+    padding: 20px;
+    max-height: fit-content;
+    border-radius: 10px;
+}
+
+.name {
+    text-align: center;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.outputContainer{
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    width: 70%;
+    border-radius: 10px;
+}
+
+.outputHeader {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.outputHeader p {
+    padding: 10px;
+    font-size: 20px;
+    width: 25%;
+}
+
+.icon {
+    padding: 10px;
+    margin-left: 70%;
+    cursor: pointer;
+}
+
+.outputButtons{
+    margin-left: 20px;
+}
+
+.active{
+    color: blueviolet !important;
+    background-color: white !important;
+}
+
+.outputButtons button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: blueviolet;
+    color: white;
+    font-weight: 700;
+    border: 2px solid blueviolet;
+    cursor: pointer;
+}
+
+.outputButtons button:hover{
+    color: blueviolet;
+    background-color: white;
+}
+
+.content {
+    padding: 20px 30px;
+}
+
+.content p{
+    margin: 10px;
+}
+
+.inputs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.inputs div {
+    margin-right: 30px;
+    margin-bottom: 10px;
+    width: 40%;
+}
+
+.content input {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.saveButton {
+    padding: 10px 20px;
+}
+
+.saveButton button {
+    margin: 0px 10px;
+}
+
+.saveButton button:nth-child(1){
+    background-color: red;
+    color: white;
+    border: 2px solid red;
+    font-weight: 700;
+}
+
+.saveButton button:nth-child(1):hover{
+    background-color: white;
+    color: red;
+}
+
+.saveButton button:nth-child(2){
+    background-color: green;
+    color: white;
+    border: 2px solid green;
+    font-weight: 700;
+}
+
+.saveButton button:nth-child(2):hover{
+    background-color: white;
+    color: green;
+}

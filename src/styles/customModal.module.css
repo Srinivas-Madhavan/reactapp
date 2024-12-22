@@ -1,0 +1,64 @@
+.display {
+    display: none;
+}
+
+.modal {
+    position : fixed;
+    top: 40%;
+    left: 38%;
+    background-color: white;
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 400px;
+}
+
+.modal p{
+    margin: 10px;
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.addtocart {
+    background-color: blueviolet;
+    color: white;
+    font-weight: 700;
+    border: 2px solid blueviolet;
+}
+
+.addtocart:hover{
+    color: blueviolet;
+    background-color: white;
+}
+
+.close{
+    background-color: red;
+    color: white;
+    font-weight: 700;
+    border: 2px solid red;
+}
+
+.close:hover{
+    color: red;
+    background-color: white;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    opacity: 0; 
+    pointer-events: none;
+    z-index: 10;
+    transition: 300ms opacity ease-in;
+}

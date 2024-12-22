@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import classes from './../styles/forgotPassword.module.css'
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -40,37 +41,36 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-600 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
-        <h2 className="text-2xl text-center text-gray-700 mb-4">Forgot Password</h2>
-        <p className="text-center text-gray-500 mb-6">
-          Enter your email address and we'll send you instructions to reset your password.
+    <div className={classes.main}>
+      <div className={classes.container}>
+        <h2 className={classes.header}>Forgot Password</h2>
+        <p>
+          Username
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit}>
           <div>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="w-full p-2 border rounded border-gray-300"
             />
           </div>
 
-          {error && <p className="text-red-500 text-sm">{error}</p>}
-          {message && <p className="text-green-500 text-sm">{message}</p>}
+          {error && <p>{error}</p>}
+          {message && <p>{message}</p>}
 
           <button
             type="submit"
-            className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition-colors"
+            className={classes.button}
           >
-            Send Reset Instructions
+            Forgot Password
           </button>
         </form>
 
-        <div className="text-center mt-6">
-          <Link to="/login" className="text-green-500 hover:text-green-600">
+        <div>
+          <Link to="/login">
             Back to Login
           </Link>
         </div>

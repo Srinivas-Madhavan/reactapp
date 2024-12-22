@@ -1,0 +1,158 @@
+.main{
+    height: 100%;
+    background-color: #d2dceb;
+}
+
+.header{
+    text-align: center;
+    padding: 20px 0px 10px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.headerComponent{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerComponent button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid rgb(83, 170, 83);
+    background-color: rgb(83, 170, 83);
+    color : white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.headerComponent button:hover{
+    background-color: white;
+    color:rgb(83, 170, 83);
+}
+
+.container {
+    background-color: white;
+    width: 400px;
+    padding: 40px;
+    margin: 20px auto;
+    border-radius: 15px;
+}
+
+.payment {
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.buttonContainer button {
+    margin: 5px;
+    border: 2px solid orange;
+    color: white;
+    font-weight: 700;
+    background-color: orange;
+}
+
+.buttonContainer button:hover{
+    background-color: white;
+    color: orange;
+}
+
+.active {
+    background-color: white !important;
+    color: orange !important;
+}
+
+.buttonContainer {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.cards {
+    padding: 20px;
+}
+
+.card {
+    margin: 5px;
+    padding: 20px;
+    border: 2px solid lightgray;
+    border-radius: 15px;
+}
+
+.card:hover{
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.214);
+}
+
+.card p {
+    font-size: 15px;
+    text-align: center;
+    margin: 10px;
+}
+
+.radio {
+    display: none;
+}
+
+.selectedCard {
+    border: 3px solid rgb(0, 183, 255);
+}
+
+.bottomButtons {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.bottomButtons button {
+    margin: 0px 10px;
+}
+
+.bottomButtons button:nth-child(1){
+    background-color: red;
+    color: white;
+    border: 2px solid red;
+    font-weight: 700;
+}
+
+.bottomButtons button:nth-child(1):hover{
+    background-color: white;
+    color: red;
+}
+
+.bottomButtons button:nth-child(2){
+    background-color: green;
+    color: white;
+    border: 2px solid green;
+    font-weight: 700;
+}
+
+.bottomButtons button:nth-child(2):hover{
+    background-color: white;
+    color: green;
+}
+
+.upi {
+    padding: 20px;
+}
+
+.upi p {
+    text-align: center;
+}
+
+.upi p:nth-child(1){
+    font-size: 20px;
+}
+
+.upi p:nth-child(2){
+    margin: 20px;
+}
+
+.qrCode {
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+}

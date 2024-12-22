@@ -1,0 +1,104 @@
+.main{
+    background-color: #d2dceb;
+}
+
+.header{
+    text-align: center;
+    padding: 20px 0px 10px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.headerComponent{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerComponent button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid rgb(83, 170, 83);
+    background-color: rgb(83, 170, 83);
+    color : white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.headerComponent button:hover{
+    background-color: white;
+    color:rgb(83, 170, 83);
+}
+
+.searchInput {
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.foodItemContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.foodItem{
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 5px;
+    width: 31%;
+    padding: 20px;
+    margin: 15px;
+
+}
+
+.foodItem p {
+    margin: 10px;
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons button {
+    margin: 10px;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+.addtocart {
+    background-color: blueviolet;
+    color: white;
+    font-weight: 700;
+    border: 2px solid blueviolet;
+    padding: 0;
+}
+
+.addtocart:hover{
+    color: blueviolet;
+    background-color: white;
+}
+
+.order{
+    background-color: orange;
+    color: white;
+    font-weight: 700;
+    border: 2px solid orange;
+}
+
+.order:hover{
+    color: orange;
+    background-color: white;
+}
+
+img {
+    width: 100%;
+}

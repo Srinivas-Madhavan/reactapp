@@ -1,67 +1,51 @@
-import React from 'react';
-import { Box, Modal, Typography, Button } from '@mui/material';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import React from "react";
+import classes from "./../styles/customModal.module.css";
+import { ClassNames } from "@emotion/react";
 
 const addToCart = (item) => {
-  const existingItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const existingItems = JSON.parse(localStorage.getItem("cartItems")) || [];
   const existingItemIndex = existingItems.findIndex(
     (cartItem) => cartItem.dishName === item.dishName
   );
-  
+
   if (existingItemIndex >= 0) {
     existingItems[existingItemIndex].quantity += 1;
   } else {
     existingItems.push({
       ...item,
-      quantity: 1
+      quantity: 1,
     });
   }
-  
-  localStorage.setItem('cartItems', JSON.stringify(existingItems));
-  // console.log(item);
-  // alert(`Added to cart: ${item.dishName}\n${item.description}\nPrice: $${item.cost}`);
 
-
+  localStorage.setItem("cartItems", JSON.stringify(existingItems));
 };
 
-const CustomModal = ({ open, onClose, item}) => {
-  console.log(item);
+const CustomModal = ({ open, onClose, item }) => {
+  let status = open ? null : classes.display;
+  
+
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-      aria-labelledby="modal-title"
-      aria-describedby="modal-description"
-    >
-      <Box sx={style}>
+    <div className={` ${status} ${classes.modal}`}>
+      <div>
         <p>{item.dishName}</p>
         <p>{item.description}</p>
         <p>{item.cost}</p>
-        <img src={item.imageURL}/>
-        <Button onClick={()=>
-        {
-          addToCart(item);
-          onClose();
-        }} 
-        variant="contained" sx={{ mt: 2 }}>
-          Add To Cart
-        </Button>
-        <Button onClick={onClose} variant="contained" sx={{ mt: 2 }}>
-          Close
-        </Button>
-      </Box>
-    </Modal>
+        <img src={item.imageURL} />
+        <div className={classes.buttons}>
+          <button
+            onClick={() => {
+              addToCart(item);
+              onClose();
+            }}
+            className={classes.addtocart}
+          >
+            Add To Cart
+          </button>
+          <button onClick={onClose} className={classes.close}>Close</button>
+        </div>
+      </div>
+      <div className={classes.overlay}></div>
+    </div>
   );
 };
 

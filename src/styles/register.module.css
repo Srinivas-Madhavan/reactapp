@@ -1,0 +1,74 @@
+.main{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d2dceb;
+    flex-direction: column;
+}
+
+.container{
+    background-color: #f2f3f7;
+    padding: 40px;
+}
+
+.header{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input{
+    margin: 10px;
+    padding: 15px;
+    width: 100%;
+}
+
+.firstnameLastname {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.firstnameLastname div:nth-child(1){
+    margin-right: 10px;
+}
+
+.firstnameLastname input {
+    padding: 15px;
+}
+
+.checkboxInput{
+    display: flex;
+    align-items: center;
+}
+
+.checkboxInput input {
+    width: 5%;
+    margin: 10px 10px 10px 0px;
+}
+
+.button {
+    width: 100%;
+    padding: 15px;
+    background-color: #4ca44c;
+    font-size: 15px;
+    font-weight: 800;
+    color: white;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: white;
+    color: #4ca44c;
+}
+
+.login {
+    margin-top: 20px;
+}
